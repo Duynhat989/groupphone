@@ -1,0 +1,75 @@
+{
+    "manifest_version": 3,
+    "name": "__MSG_extName__",
+    "version": "1.0.105",
+    "description": "__MSG_extDescription__",
+    "default_locale": "vi",
+    "short_name": "SyncPhone",
+    "permissions": [
+        "storage",
+        "tabs",
+        "scripting",
+        "sidePanel",
+        "cookies"
+    ],
+    "host_permissions": [
+        "https://facebook.com/*",
+        "https://*.facebook.com/*",
+        "https://fb.com/*",
+        "https://*.fb.com/*",
+        "https://graph.facebook.com/*",
+        "http://127.0.0.1/*",
+        "http://localhost/*",
+        "http://*/*",
+        "https://*/*"
+    ],
+    "action": {
+        "default_icon": {
+            "16": "assets/images/icon-16x16.png",
+            "64": "assets/images/icon-48x48.png",
+            "128": "assets/images/icon-128x128.png"
+        },
+        "default_title": "__MSG_extName__"
+    },
+    "side_panel": {
+        "default_path": "sidepanel.html"
+    },
+    "options_page": "sidepanel.html",
+    "icons": {
+        "16": "assets/images/icon-16x16.png",
+        "64": "assets/images/icon-48x48.png",
+        "128": "assets/images/icon-128x128.png"
+    },
+    "background": {
+        "service_worker": "service-worker.js",
+        "type": "module"
+    },
+    "content_scripts": [
+        {
+            "js": [
+                "content-script.js"
+            ],
+            "matches": [
+                "https://facebook.com/*",
+                "https://*.facebook.com/*",
+                "https://fb.com/*",
+                "https://*.fb.com/*"
+            ],
+            "run_at": "document_idle",
+            "all_frames": false
+        }
+    ],
+    "web_accessible_resources": [
+        {
+            "resources": [
+                "assets/images/*.png",
+                "assets/images/*.ico",
+                "page-bridge.js"
+            ],
+            "matches": [
+                "https://*.facebook.com/*",
+                "https://facebook.com/*"
+            ]
+        }
+    ]
+}
